@@ -5,7 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Етап запуску (Run stage)
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk-slim-buster
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
