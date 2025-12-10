@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Глобальні налаштування --- */
+body {
+    @apply bg-slate-50 text-slate-800 font-sans; /* Tailwind класи для фону і тексту */
+}
+
+/* --- Перевизначення Bootstrap кнопок через Tailwind --- */
+.btn-primary {
+    @apply !bg-gradient-to-br !from-blue-600 !to-blue-700 !border-0 !shadow-lg hover:!translate-y-[-2px] hover:!shadow-blue-500/30 transition-all duration-300;
+}
+
+.btn-success {
+    @apply !bg-gradient-to-br !from-emerald-500 !to-emerald-700 !border-0 !shadow-lg hover:!translate-y-[-2px] hover:!shadow-emerald-500/30 transition-all duration-300;
+}
+
+/* --- Картка товару (Product Card) --- */
+.product-card-hover {
+    @apply transition-all duration-300 rounded-2xl overflow-hidden bg-white border border-slate-100 !important;
+}
+
+.product-card-hover:hover {
+    @apply -translate-y-2 shadow-2xl shadow-slate-200 border-blue-500/50 !important;
+}
+
+/* Анімація картинки всередині картки */
+.product-card-hover img {
+    @apply transition-transform duration-500;
+}
+
+.product-card-hover:hover img {
+    @apply scale-110;
+}
+
+/* --- Навігація (Navbar) --- */
+.navbar {
+    @apply !bg-gradient-to-r !from-slate-900 !to-slate-800 !py-3 shadow-md;
+}
+
+.navbar-brand {
+    @apply !font-bold !tracking-wide !uppercase;
+}
+
+.dropdown-menu {
+    @apply !border-0 !shadow-xl !rounded-xl !mt-2 overflow-hidden animate-fade-in-up;
+}
+
+.dropdown-item:active {
+    @apply !bg-blue-600;
+}
+
+/* --- Футер --- */
+footer {
+    @apply !bg-slate-900 !border-t-4 !border-blue-600;
+}
+
+/* --- Анімації --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out forwards;
+}
