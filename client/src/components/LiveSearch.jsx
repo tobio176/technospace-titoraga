@@ -12,7 +12,7 @@ export default function LiveSearch() {
 
     // 1. Завантажуємо товари один раз при монтуванні (для швидкості пошуку)
     useEffect(() => {
-        axios.get('http://localhost:8080/api/products')
+        axios.get('https://technospace-titoraga.onrender.com/api/products')
             .then(res => setProducts(res.data))
             .catch(err => console.error("Search Error:", err));
     }, []);

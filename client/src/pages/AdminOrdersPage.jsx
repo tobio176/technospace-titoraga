@@ -9,7 +9,7 @@ export default function AdminOrdersPage() {
     // Функція завантаження
     const fetchOrders = () => {
         const token = localStorage.getItem('token');
-        axios.get('http://localhost:8080/api/orders/all', {
+        axios.get('https://technospace-titoraga.onrender.com/api/orders/all', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(res => {
@@ -26,7 +26,7 @@ export default function AdminOrdersPage() {
     // Зміна статусу
     const handleStatusChange = (orderId, newStatus) => {
         const token = localStorage.getItem('token');
-        axios.put(`http://localhost:8080/api/orders/${orderId}/status?status=${newStatus}`, {}, {
+        axios.put(`https://technospace-titoraga.onrender.com/api/orders/${orderId}/status?status=${newStatus}`, {}, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(() => {

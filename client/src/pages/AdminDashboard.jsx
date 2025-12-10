@@ -44,11 +44,11 @@ export default function AdminDashboard() {
 
     // --- ЗАВАНТАЖЕННЯ ДАНИХ ---
     const fetchData = () => {
-        axios.get('http://localhost:8080/api/orders/all', authHeader).then(res => setOrders(res.data)).catch(console.error);
-        axios.get('http://localhost:8080/api/admin/users', authHeader).then(res => setUsers(res.data)).catch(console.error);
-        axios.get('http://localhost:8080/api/admin/reviews/pending', authHeader).then(res => setPendingReviews(res.data)).catch(console.error);
-        axios.get('http://localhost:8080/api/products/categories').then(res => setCategories(res.data)).catch(console.error);
-        axios.get('http://localhost:8080/api/products').then(res => setProducts(res.data)).catch(console.error);
+        axios.get('https://technospace-titoraga.onrender.com/api/orders/all', authHeader).then(res => setOrders(res.data)).catch(console.error);
+        axios.get('https://technospace-titoraga.onrender.com/api/admin/users', authHeader).then(res => setUsers(res.data)).catch(console.error);
+        axios.get('https://technospace-titoraga.onrender.com/api/admin/reviews/pending', authHeader).then(res => setPendingReviews(res.data)).catch(console.error);
+        axios.get('https://technospace-titoraga.onrender.com/api/products/categories').then(res => setCategories(res.data)).catch(console.error);
+        axios.get('https://technospace-titoraga.onrender.com/api/products').then(res => setProducts(res.data)).catch(console.error);
     };
 
     useEffect(() => { fetchData(); }, []);
@@ -117,12 +117,12 @@ export default function AdminDashboard() {
 
         if (productForm.id) {
             // UPDATE
-            axios.put(`http://localhost:8080/api/products/${productForm.id}`, payload, authHeader)
+            axios.put(`https://technospace-titoraga.onrender.com/api/products/${productForm.id}`, payload, authHeader)
                 .then(() => { alert('Оновлено!'); setShowModal(false); fetchData(); })
                 .catch(err => alert('Помилка: ' + err.message));
         } else {
             // CREATE
-            axios.post('http://localhost:8080/api/products', payload, authHeader)
+            axios.post('https://technospace-titoraga.onrender.com/api/products', payload, authHeader)
                 .then(() => { alert('Створено!'); setShowModal(false); fetchData(); })
                 .catch(err => alert('Помилка: ' + err.message));
         }
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
     // 4. Видалення
     const handleDeleteProduct = (id) => {
         if (window.confirm('Ви впевнені, що хочете видалити цей товар? Це незворотно.')) {
-            axios.delete(`http://localhost:8080/api/products/${id}`, authHeader)
+            axios.delete(`https://technospace-titoraga.onrender.com/api/products/${id}`, authHeader)
                 .then(() => { fetchData(); })
                 .catch(err => alert('Помилка видалення'));
         }
@@ -146,13 +146,13 @@ export default function AdminDashboard() {
 
     // --- ДІЇ ДЛЯ ЗАМОВЛЕНЬ/ЮЗЕРІВ ---
     const updateOrderStatus = (id, status) => {
-        axios.put(`http://localhost:8080/api/orders/${id}/status?status=${status}`, {}, authHeader).then(() => { alert('Оновлено'); fetchData(); });
+        axios.put(`https://technospace-titoraga.onrender.com/api/orders/${id}/status?status=${status}`, {}, authHeader).then(() => { alert('Оновлено'); fetchData(); });
     };
     const moderateReview = (id, status) => {
-        axios.put(`http://localhost:8080/api/admin/reviews/${id}/status?status=${status}`, {}, authHeader).then(() => fetchData());
+        axios.put(`https://technospace-titoraga.onrender.com/api/admin/reviews/${id}/status?status=${status}`, {}, authHeader).then(() => fetchData());
     };
     const toggleBan = (id) => {
-        axios.put(`http://localhost:8080/api/admin/users/${id}/ban`, {}, authHeader).then(() => fetchData());
+        axios.put(`https://technospace-titoraga.onrender.com/api/admin/users/${id}/ban`, {}, authHeader).then(() => fetchData());
     };
     const formatPayment = (method) => method === 'CASH' ? '💵 Готівка' : '💳 Картка';
 
@@ -161,7 +161,7 @@ export default function AdminDashboard() {
         const text = replyText[reviewId];
         if (!text) return alert("Введіть текст відповіді!");
 
-        axios.put(`http://localhost:8080/api/admin/reviews/${reviewId}/reply`, { reply: text }, authHeader)
+        axios.put(`https://technospace-titoraga.onrender.com/api/admin/reviews/${reviewId}/reply`, { reply: text }, authHeader)
             .then(() => {
                 alert("Відповідь додано!");
                 // Очистити поле

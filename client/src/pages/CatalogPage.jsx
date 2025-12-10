@@ -18,7 +18,7 @@ export default function CatalogPage() {
 
     // 1. Завантаження даних
     useEffect(() => {
-        axios.get('http://localhost:8080/api/products')
+        axios.get('https://technospace-titoraga.onrender.com/api/products')
             .then(res => {
                 let data = res.data;
                 // Фільтрація за категорією

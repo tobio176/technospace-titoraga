@@ -18,7 +18,7 @@ export default function AdminPage() {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            await axios.post('http://localhost:8080/api/products', formData, {
+            await axios.post('https://technospace-titoraga.onrender.com/api/products', formData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setMsg({ type: 'success', text: 'Товар успішно додано!' });

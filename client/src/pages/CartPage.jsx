@@ -41,7 +41,7 @@ export default function CartPage() {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/orders', orderData, {
+            await axios.post('https://technospace-titoraga.onrender.com/api/orders', orderData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             alert("✅ Замовлення успішно оформлено! Менеджер зв'яжеться з вами.");

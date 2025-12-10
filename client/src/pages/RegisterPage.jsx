@@ -18,7 +18,7 @@ export default function RegisterPage() {
         e.preventDefault();
         try {
             // Відправляння даних на Java-бекенд
-            const response = await axios.post('http://localhost:8080/api/auth/register', formData);
+            const response = await axios.post('https://technospace-titoraga.onrender.com/api/auth/register', formData);
 
             // Якщо успішно - збереження токена
             localStorage.setItem('token', response.data.token);

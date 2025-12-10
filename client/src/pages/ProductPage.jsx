@@ -20,7 +20,7 @@ export default function ProductPage() {
 
     useEffect(() => {
         // 1. Завантаження товару
-        axios.get('http://localhost:8080/api/products')
+        axios.get('https://technospace-titoraga.onrender.com/api/products')
             .then(res => {
                 const found = res.data.find(p => p.id === parseInt(id));
                 setProduct(found);
@@ -30,7 +30,7 @@ export default function ProductPage() {
             });
 
         // 2. Завантаження СХВАЛЕНИХ відгуків
-        axios.get(`http://localhost:8080/api/reviews/product/${id}`)
+        axios.get(`https://technospace-titoraga.onrender.com/api/reviews/product/${id}`)
             .then(res => setReviews(res.data))
             .catch(err => console.error(err));
     }, [id]);
@@ -51,7 +51,7 @@ export default function ProductPage() {
         };
 
         try {
-            await axios.post('http://localhost:8080/api/reviews', payload, {
+            await axios.post('https://technospace-titoraga.onrender.com/api/reviews', payload, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setMsg({ type: 'success', text: 'Дякуємо! Ваше повідомлення відправлено на модерацію.' });

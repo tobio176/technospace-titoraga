@@ -29,7 +29,7 @@ export default function ConfiguratorPage() {
     ];
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/products')
+        axios.get('https://technospace-titoraga.onrender.com/api/products')
             .then(res => {
                 setAllProducts(res.data);
                 // Знаходимо товар "Збірка" в базі даних

@@ -8,7 +8,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        axios.get('http://localhost:8080/api/orders/my', {
+        axios.get('https://technospace-titoraga.onrender.com/api/orders/my', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(res => {

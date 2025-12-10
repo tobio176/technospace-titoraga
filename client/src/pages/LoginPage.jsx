@@ -15,7 +15,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/authenticate', formData);
+            const response = await axios.post('https://technospace-titoraga.onrender.com/api/auth/authenticate', formData);
             localStorage.setItem('token', response.data.token);
             navigate('/');
             window.location.reload();
